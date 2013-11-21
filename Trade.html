@@ -1,0 +1,773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>World Trade 5</title>
+  
+
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.v2.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="d3/jquery.timelinr-0.9.53.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<link rel="stylesheet" href="css/style.css" media="screen" />
+	<script>
+		$(function(){
+			$().timelinr({
+				arrowKeys: 'true'
+			})
+		});
+	</script>
+</head>
+<body>
+
+<div>
+
+<!--ChordChart Start-->
+<div id="chart">
+	<div id="highlight">
+<h1 id="name">Network of Global Merchanside Trade</h1>
+<h3>Visualization of inter-regional and country data</h3>
+</div>
+</div>
+<!--ChordChart End-->
+
+<!--Timeline Start-->
+
+<div id="timeline">
+		<ul id="dates">
+			<li><a id = "Year1" href="Year1">2001</a></li>
+			<li><a id = "Year2" href="Year2">2002</a></li>
+			<li><a id = "Year3" href="Year3">2003</a></li>
+			<li><a id = "Year4" href="Year4">2004</a></li>
+			<li><a id = "Year5" href="Year5">2005</a></li>
+			<li><a id = "Year6" href="Year6">2006</a></li>
+			<li><a id = "Year7" href="Year7">2007</a></li>
+			<li><a id = "Year8" href="Year8">2008</a></li>
+			<li><a id = "Year9" href="Year9">2009</a></li>
+			<li><a id = "Year10" href="Year10">2010</a></li>
+			<li><a id = "Year11" href="Year11">2011</a></li>
+		</ul>
+</div>
+
+
+
+<!--Timeline End-->
+
+</div>
+
+<!--BarChart Start-->
+<style>
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+<body>
+
+<!--Chord JavaSript Start-->
+<script type="text/javascript">
+var arcs = [],
+    chords = [],
+    trade =[],
+    year = 1,
+    nextYear = 2,
+	selected = -1;
+
+
+
+//data for chord
+trade[1] = [
+  [391 ,211 ,255 ,12 ,25 ,39 ,376 ],
+  [164 ,59 ,58 ,6 ,5 ,3 ,40 ],
+  [188 ,42 ,1677 ,158 ,73 ,39 ,252 ],
+  [7 ,3 ,147 ,76 ,1 ,2 ,17 ],
+  [13 ,4 ,63 ,3 ,11 ,9 ,24 ],
+  [21 ,4 ,65 ,8 ,3 ,18 ,45 ],
+  [207 ,22 ,195 ,19 ,21 ,112 ,722 ]
+];
+		
+trade[2] = [
+  [382 ,215 ,270 ,14 ,24 ,38 ,394 ],
+  [152 ,54 ,55 ,6 ,5 ,3 ,39 ],
+  [170 ,44 ,1787 ,176 ,71 ,40 ,260 ],
+  [7 ,3 ,168 ,80 ,1 ,2 ,21 ],
+  [12 ,4 ,66 ,4 ,11 ,9 ,26 ],
+  [20 ,5 ,68 ,7 ,3 ,17 ,48 ],
+  [204 ,23 ,208 ,24 ,24 ,116 ,792 ]
+];
+
+
+trade[3] = [
+  [404 ,218 ,298 ,19 ,33 ,46 ,428 ],
+  [153 ,59 ,57 ,7 ,4 ,3 ,41 ],
+  [180 ,51 ,2130 ,228 ,84 ,48 ,319 ],
+  [8 ,4 ,214 ,98 ,1 ,2 ,32 ],
+  [12 ,5 ,80 ,4 ,18 ,10 ,31 ],
+  [21 ,4 ,83 ,9 ,3 ,22 ,56 ],
+  [219 ,29 ,248 ,30 ,31 ,145 ,949 ]
+];
+
+		
+trade[4] = [
+  [742 ,93 ,367 ,18 ,43 ,55 ,533 ],
+  [71 ,64 ,51 ,6 ,7 ,4 ,39 ],
+  [216 ,59 ,2973 ,129 ,99 ,64 ,417 ],
+  [5 ,3 ,88 ,55 ,1 ,1 ,25 ],
+  [15 ,7 ,98 ,4 ,23 ,13 ,45 ],
+  [25 ,5 ,105 ,10 ,3 ,22 ,75 ],
+  [249 ,39 ,308 ,35 ,39 ,193 ,1201 ]
+];
+
+		
+trade[5] = [
+  [824 ,118 ,398 ,19 ,60 ,66 ,608 ],
+  [87 ,86 ,58 ,7 ,8 ,3 ,51 ],
+  [238 ,68 ,3201 ,178 ,128 ,87 ,498 ],
+  [7 ,6 ,109 ,62 ,1 ,3 ,37 ],
+  [18 ,10 ,112 ,5 ,26 ,15 ,54 ],
+  [34 ,6 ,122 ,11 ,5 ,54 ,89 ],
+  [270 ,48 ,332 ,40 ,49 ,281 ,1424 ]
+];
+trade[6] = [
+  [905.3,135.0,430.3,24.2,79.8,72.3,708.3],
+  [107.3,111.5,66.6,7.6,11.3,4.4,69.5],
+  [279.3,86.4,3651.5,246.5,148.1,102.8,603.8],
+  [8.3,6.1,141.6,80.3,1.4,3.0,49.7],
+  [21.7,11.3,120.2,5.7,32.8,20.9,69.9],
+  [42.1,7.9,128.9,13.3,6.3,71.6,111.4],
+  [314.1,61.8,366.4,45.6,72.6,339.6,1638.5]
+];
+
+trade[7] = [
+  [951.2,151.3,458.5,23.6,91.9,83.9,756.4],
+  [130.7,122.0,80.4,6.3,14.6,4.4,92.3],
+  [328.7,105.6,4243.6,287.5,167.5,108.3,714.6],
+  [12.4,6.4,189.0,103.2,0.9,4.8,79.8],
+  [27.3,13.7,147.7,6.9,40.5,27.5,91.4],
+  [50.1,9.1,152.9,16.2,10.5,93.4,150.4],
+  [352.1,80.2,433.7,59.6,80.9,397.3,1889.8]
+];
+trade[8] = [
+  [1014.5,169.2,475.4,36.1,121.6,116.5,775.0],
+  [164.9,158.6,96.4,10.1,18.5,6.9,127.3],
+  [369.1,121.3,4695.0,405.6,218.1,125.5,801.0],
+  [16.0,9.0,240.0,134.7,1.5,7.2,108.4],
+  [33.6,16.8,185.5,10.5,53.4,36.6,121.3],
+  [60.2,11.9,188.6,25.0,14.0,122.1,196.4],
+  [375.5,100.6,486.5,76.8,113.9,568.9,2181.4]
+];
+trade[9] = [
+  [769,115,366,23,66,60,627],
+  [128,120,75,5,9,5,95],
+  [292,90,3620,239,149,76,641],
+  [9,6,147,87,1,4,57],
+  [28,13,162,7,45,34,102],
+  [49,11,154,14,12,107,163],
+  [324,96,426,63,85,357,1846]
+];
+
+trade[10] = [
+  [956,138,416,33,85,79,801],
+  [165,148,98,6,14,7,148],
+  [330,108,3998,308,184,108,808],
+  [11,8,180,109,2,5,85],
+  [32,15,177,9,62,29,128],
+  [53,15,168,19,19,89,198],
+  [413,134,524,88,123,471,2464]
+];
+trade[11] = [
+  [1103,181,480,43,102,107,906],
+  [201,200,119,11,19,10,189],
+  [382,138,4667,409,205,158,922],
+  [15,8,234,154,2,6,110],
+  [37,21,199,12,77,38,152],
+  [63,18,194,24,21,110,242],
+  [476,169,639,117,146,660,2926]
+];
+
+
+
+//  Assignment of chord data range
+var data = trade[1];
+var year = 1;
+    
+var last_chord = {};
+var last_bar = {};
+
+var fill = d3.scale.ordinal()
+    .domain(d3.range(4))
+    .range([ "#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#e377c2","#FFFF00"]);
+
+var labels = ["North America", "South/Central America", "Europe", "CIS", "Africa", "Middle East", "Asia"];
+
+
+// Note Bottom Left //
+d3.select("#chart")
+	.append("div")
+	.attr("class", "note")
+	.html("<p>IS428 Visualization Analytics and Business Intelligence<br/>Team Cambridge 42</p>"); 
+	
+//guide button
+d3.select("#chart")
+	.append("div")
+	.attr("id","guide")
+	.text("View User Guide");
+
+// Tooltip Setup ///
+var tooltip = d3.select("#chart")
+	 .append("div")
+     .attr("class", "tooltip")
+     .html("<p id=p3>Click on years on year slider to view inter-regional trading network from 2001-2012</p><p id=p1>Hover mouse on the arcs of <b>Chord Diagram</b> to view region's export volume</p><p id=p2>Click on the arcs of <b>Chord Diagram</b> to view export/import volume of countries in each region </P>") 
+
+// div for bar chart set uo
+d3.select("#chart")
+	.append("div")
+	.attr("id","barChart");
+	
+d3.select("#chart")
+	.append("div")
+	.attr("id","chordDiv");
+		 
+	 
+var w = 550,
+    h = 550,
+    r0 = Math.min(w, h) * .25,
+    r1 = r0 * 1.1;
+
+var svg = render(data,year);
+var svg2 = renderBar(0,0);
+
+
+
+/*** Interactions ***/
+update(1); 
+d3.select("#guide").on("click",function(){showUserGuide();});
+//Timeline//
+d3.select("#Year1").on("click", function(){update(1);}); 
+d3.select("#Year2").on("click", function(){update(2);});
+d3.select("#Year3").on("click", function(){update(3);});
+d3.select("#Year4").on("click", function(){update(4);});
+d3.select("#Year5").on("click", function(){update(5);});
+d3.select("#Year6").on("click", function(){update(6);});
+d3.select("#Year7").on("click", function(){update(7);});
+d3.select("#Year8").on("click", function(){update(8);});
+d3.select("#Year9").on("click", function(){update(9);});
+d3.select("#Year10").on("click", function(){update(10);});
+d3.select("#Year11").on("click", function(){update(11);});
+
+function update(nextYear) {
+
+  
+  var new_data = trade[nextYear]; 
+
+  // remove ticks and rerender
+  svg.selectAll(".ticks")
+    .transition()
+      .each("end", function() { rerender(new_data,nextYear); })
+      .duration(200)
+      .attr("opacity", 0.1)
+      .remove();
+	  
+	  svg.selectAll(".label")
+    .transition()
+      .duration(20)
+      .attr("opacity", 0.1)
+      .remove();
+	  
+  year = nextYear;
+ 
+};
+
+/*** Functions ***/
+
+// render data for bar chart
+function renderBar(data) {
+	
+var margin = {top: 80, right: 100, bottom: 200, left: 90},
+    width = 450;
+    height = 200;
+
+var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .3);
+
+var x1 = d3.scale.ordinal();
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#98abc5", "#ff8c00"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x0)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".8s"));
+
+
+var svgBar = d3.select("#barChart").append("svg")
+	.attr("id","bar")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .attr("right","400px")
+  	.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv(data, function(error, data) {
+  var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "State"; });
+
+  data.forEach(function(d) {
+    d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
+  });
+
+  x0.domain(data.map(function(d) { return d.State; }));
+  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+  y.domain([0, d3.max(data, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+
+  svgBar.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+//draw x axis
+  svgBar.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Volumn/Thousand USD");
+
+  var state = svgBar.selectAll(".state")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; });
+
+  state.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("width", x1.rangeBand())
+      .attr("x", function(d) { return x1(d.name); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill", function(d) { return color(d.name); });
+
+  var legend = svgBar.selectAll(".legend")
+      .data(ageNames.slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(30," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 1)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width + 48)
+      .attr("y", 9)
+      .attr("dy", ".24em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+
+}
+
+//rerender data for the bar
+function rerenderBar(data){
+	
+var margin = {top: 80, right: 100, bottom: 200, left: 120},
+    width = 450;
+    height = 200;
+
+d3.select("#bar").selectAll("g").remove();
+
+var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .3);
+
+var x1 = d3.scale.ordinal();
+
+var y = d3.scale.linear()
+    .range([height, 20]);
+
+var color = d3.scale.ordinal()
+    .range(["#98abc5", "#ff8c00"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x0)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".2s"));
+
+var svgBar = d3.select("#bar")
+  	.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv(data, function(error, data) {
+  var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "State"; });
+
+  data.forEach(function(d) {
+    d.ages = ageNames.map(function(name) { return {name: name, value: +d[name]}; });
+  });
+
+  x0.domain(data.map(function(d) { return d.State; }));
+  x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+  y.domain([0, d3.max(data, function(d) { return d3.max(d.ages, function(d) { return d.value; }); })]);
+
+  svgBar.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svgBar.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 2)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Volumn/Thousand USD");
+
+  var state = svgBar.selectAll(".state")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; });
+
+  state.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("width", x1.rangeBand())
+      .attr("x", function(d) { return x1(d.name); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill", function(d) { return color(d.name); })
+      .attr("class","updateRect");
+
+  var legend = svgBar.selectAll(".legend")
+      .data(ageNames.slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", width - 1)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+  legend.append("text")
+      .attr("x", width + 48)
+      .attr("y", 9)
+      .attr("dy", ".24em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+
+});
+	
+}
+
+//render data for chord
+function render(data,year) {
+//load data into build-in chord
+  var chord = d3.layout.chord()
+    .padding(.05)
+    .sortSubgroups(d3.descending)
+    .matrix(data);
+
+  // create svg
+  var svg = d3.select("#chordDiv")
+    .append("svg:svg")
+    .attr("width", w+250)
+    .attr("height", h+150)
+    .append("svg:g")
+    .attr("transform", "translate(" + w / 1.5 + "," + h / 1.8 + ")")
+    
+ 
+  // draw arcs
+  svg.append("svg:g")
+     .selectAll("path")
+     .data(chord.groups)
+     .enter().append("svg:path")
+     .attr("class", "arc")
+     .style("fill", function(d) { return fill(d.index); })
+     .style("stroke", function(d) { return fill(d.index); })
+     //.on("mousemove", function(){return tooltip.style("top", (mouseY-100)+"px").style("left",(mouseX-(jQuery(window).width()/5.8))+"px");})
+	 //.on("mousedown", function(g,i){if (selected == i){selected = -1; fade(g,i,.8);}else{selected=i;fade(g,i,.1);}})
+	// .on("mouseout", function(){return tooltip.style("visibility", "hidden");})
+	 .on("mouseover",showTooltip)
+	 .on("click",function(d){rerenderBar(chooseDataFile(d.index, year));})
+	 .attr("d", d3.svg.arc().innerRadius(r0).outerRadius(r1));
+
+
+  // draw chords
+  svg.append("svg:g")
+     .attr("class", "chord")
+     .selectAll("path")
+     .data(chord.chords)
+     .enter().append("svg:path")
+	 .attr("d", d3.svg.chord().radius(r0))
+     .style("fill", function(d) { return fill(d.target.index); })
+     .style("stroke", '#333')
+     .style("opacity", 1);
+
+  drawTicks(chord,svg);
+ // drawLabels(chord,svg);
+  drawLabelsRect(chord,svg);
+  last_chord = chord;
+
+  return svg;
+};
+
+//rerender a chord
+function rerender(data,year) {
+
+  var chord = d3.layout.chord()
+    .padding(.05)
+    .sortSubgroups(d3.descending)
+    .matrix(data);
+
+  // update arcs
+  svg.selectAll(".arc")
+     .data(chord.groups)
+     .on("mouseover",showTooltip)
+	 .on("click",function(d){rerenderBar(chooseDataFile(d.index, year));})
+     .transition()
+     .duration(1000)
+     .attrTween("d", arcTween(last_chord));
+	
+
+  // used to time tick drawing
+  var last = svg.select(".chord").selectAll("path")[0].length - 1
+
+  // update chords
+  svg.select(".chord")
+     .selectAll("path")
+     .data(chord.chords)
+     .transition()
+     .duration(1000)
+     .attrTween("d", chordTween(last_chord))
+     .each("end", function(d,i) {
+       if (i == last) {
+           drawTicks(chord,svg);
+		  // drawLabels(chord,svg);
+		   drawLabelsRect(chord,svg);
+       }
+     });
+     
+	var b = function(d){ rerenderBar(chooseDataFile(d.index, year));};
+  last_chord = chord;
+}
+
+// draw chord ticks
+function drawTicks(chord,svg) {
+  var ticks = svg.append("svg:g")
+      .attr("class", "ticks")
+      .attr("opacity", 0.1)
+      .selectAll("g")
+      .data(chord.groups)
+      .enter().append("svg:g")
+      .selectAll("g")
+      .data(groupTicks)
+      .enter().append("svg:g")
+      .attr("transform", function(d) {
+        return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+            + "translate(" + r1 + ",0)";
+      });
+
+  svg.selectAll(".ticks")
+     .transition()
+     .duration(700)
+     .attr("opacity", 1)
+
+  ticks.append("svg:line")
+       .attr("x1", 1)
+       .attr("y1", 0)
+       .attr("x2", 5)
+       .attr("y2", 0)
+       .attr("stroke", '#000')
+  
+  
+  ticks.append("svg:text")
+       .attr("x", 8)
+       .attr("dy", '.35em')
+       .attr("text-anchor", function(d) {
+             return d.angle > Math.PI ? "end" : null;
+           })
+       .attr("transform", function(d) {
+             return d.angle > Math.PI ? "rotate(180)translate(-16)" : null;
+           })
+       .text(function(d) { return d.label; });
+ 
+  return ticks;
+}
+
+function drawLabelsRect(chord,svg){
+	var labelRect = svg.selectAll(".labelRect")
+	.data(chord.groups)
+	.enter()
+	.append("g")
+	.attr("class","labelRect")
+	.attr("transform", function(d, i) { return "translate(-280," + i * 25 + ")"; });
+	
+	labelRect.append("rect")
+      .attr("x",  60)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", function(d) { return fill(d.index); });
+
+  	labelRect.append("text")
+      .attr("x", 48)
+      .attr("y", 9)
+      .attr("dy", ".24em")
+      .style("text-anchor", "end")
+      .text(function(d) { return labels[d.index]; });
+	
+}
+
+//draw chord labels
+function drawLabels(chord,svg) {
+  var  labelticks = svg.selectAll("g.group")
+      .data(chord.groups)
+	.enter().append("g")
+      .attr("class", "label");
+
+  svg.selectAll(".label")
+     .transition()
+     .duration(200)
+
+  labelticks.append("svg:text")
+      .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+      .attr("class", "label")
+	  .attr("dy", ".20em")
+      .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+      .attr("transform", function(d) {
+        return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+            + "translate(" + (170) + ")"
+            + (d.angle > Math.PI ? "rotate(180)" : "");
+      })
+      .text(function(d) { return labels[d.index]; });
+	  
+};
+
+var arc =  d3.svg.arc()
+      .startAngle(function(d) { return d.startAngle })
+      .endAngle(function(d) { return d.endAngle })
+      .innerRadius(r0)
+      .outerRadius(r1);
+
+var chordl = d3.svg.chord().radius(r0);
+
+function arcTween(chord) {
+  return function(d,i) {
+    var i = d3.interpolate(chord.groups()[i], d);
+
+    return function(t) {
+      return arc(i(t));
+    }
+  }
+}
+
+function chordTween(chord) {
+  return function(d,i) {
+    var i = d3.interpolate(chord.chords()[i], d);
+
+    return function(t) {
+      return chordl(i(t));
+    }
+  }
+}
+
+// Returns an array of tick angles and labels, given a group.
+function groupTicks(d) {
+  var k = (d.endAngle - d.startAngle) / d.value;
+  return d3.range(0, d.value, 100).map(function(v, i) {
+    return {
+      angle: v * k + d.startAngle,
+      label: i % 5 ? null : v + "B"
+    };
+  });
+}
+
+ 
+/** Returns an event handler for fading a given chord group. */
+ function fade(g,i,opacity) {
+	
+	 svg.selectAll("g.chord path")
+		 .style("opacity", .8)
+		 .filter(function(d) {
+           return d.source.index != i && d.target.index != i;
+         })
+       .transition()
+		.style("opacity", opacity);
+   }
+ 
+function showUserGuide(){
+	tooltip
+     .html("<p id=p3>Click on years on year slider to view inter-regional trading network from 2001-2012</p><p id=p1>Hover mouse on the arcs of <b>Chord Diagram</b> to view region's export volume</p><p id=p2>Click on the arcs of <b>Chord Diagram</b> to view export/import volume of countries in each region </P>"); 
+
+}   
+ 
+function showTooltip(d,i){
+  data=trade[year];
+  
+  tooltip
+  .style("visibility", "visible")
+  .html("<p>"+(2000+year)+" "+labels[i]+"</p><b>Value($bn.) of exports to:</b>");
+  
+  tooltip
+  .append("table")
+  .attr("class", "tooltipTable")
+  .selectAll("td")
+	.data(data[i])
+    .enter()
+	.append("tr")
+	.text(function(d,i){return labels[i];})
+    .append("td")
+	.text(function(d){return d;});
+  }
+  
+  
+ function chooseDataFile(i, year)
+	{
+	var firstname = "data/Year" + year + "_" +	i + ".csv";
+	return firstname;
+	}
+
+  	
+/// Mouse catcher ///
+ $(document).mousemove( function(e) {
+  mouseX = e.pageX;
+  mouseY = e.pageY; } );
+  
+</script>
+<!--Chord JavaSript End-->
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+p{
+	font-size:20px;
+	font: sans-serif;
+	color: #F60;
+}
+
+#p1,#p2,#p3{
+	color:#464646;
+	font-size:14px;
+	text-align:center;
+}
+
+#p3{
+	margin-top:40px;
+}
+
+#chart {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid gray;
+  font: 10px sans-serif;
+  text-shadow: none;
+  width: 1400px;
+  height:760px;
+  text-align: center;
+  margin-left: auto ;
+  margin-right: auto ;
+  background-image:url('');
+}
+
+
+.tooltip{
+	position: absolute;
+  	text-align: center;
+	position:absolute;
+	width:400px;
+	height:230px;
+	top: 180px;
+	right:300px;
+	z-index: 10;
+	font: 12px sans-serif;
+  	background: white;
+  	color: #464646; 
+  	box-shadow:inset 0 0 4px #BFBEB7;
+}	
+
+.box {
+  position: absolute;
+  text-align: left;
+  z-index: 1;
+  padding: 8px;
+  color: #464646;
+  border: solid 1px #aaa;
+}
+
+.chord path {
+ fill-opacity: .67;
+ stroke: #000;
+ stroke-width: .5px;
+}
+
+
+
+.tooltipTable{
+ position:relative;
+ border :0;
+ padding :3px;
+ width:380px;
+ height:0%;
+ right:30px;
+ visibility: inherit;
+ text-align: center;
+}
+
+.sources{
+	font-size: 8px;
+	font-weight: bold;
+	position:absolute;
+	left:45%;
+	top:98%;
+}
+
+#barChart{
+	position: absolute;
+	width:550px;
+	height:230px;
+	bottom: 200px;
+	right:250px;
+}
+
+#chordDiv{
+	position: absolute;
+	width:600px;
+	height:530px;
+	bottom: 180px;
+	left:100px;
+}
+
+.note{
+  font-size: 12px;
+  font-weight: bold;
+  text-align:left;
+  position:absolute;
+  left:2%;
+  top:73%;
+}
+
+#highlight{
+	background-color:#F60;
+	top:0%;
+	padding:0px;
+	margin:0px;
+	width:100%;
+	height:10%;
+}
+
+#name{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 24px;
+	color: white;
+	font-weight: bold;
+}
+
+
+a {
+	color: #ff9900;
+	text-decoration: none;
+	-webkit-transition: 0.0s;
+	-moz-transition: 0.0s;
+	-o-transition: 0.0s;
+	-ms-transition: 0.0s;
+	transition: 0.0s;
+}
+	a:hover,
+	a.selected {
+		color: #cc6600;
+	}
+
+h1,h2,h4,h5,h6 {
+	text-align: center;
+	margin-bottom: 0;
+}
+	h1 {
+		font-size: 20px;
+	}
+	h2 {
+		font-size: 14px;
+	}
+	h3{
+	font-size: 16px;
+	margin-botton: 5px;
+	}
+.sociales {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#guide{
+	position:absolute;
+	right:140px;
+	top:230px;
+	text-align:center;
+	color:#FFFFFF;
+	-moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+	background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+	background-color:#ffc477;
+	-webkit-border-top-left-radius:23px;
+	-moz-border-radius-topleft:23px;
+	border-top-left-radius:23px;
+	-webkit-border-top-right-radius:23px;
+	-moz-border-radius-topright:23px;
+	border-top-right-radius:23px;
+	-webkit-border-bottom-right-radius:23px;
+	-moz-border-radius-bottomright:23px;
+	border-bottom-right-radius:23px;
+	-webkit-border-bottom-left-radius:23px;
+	-moz-border-radius-bottomleft:23px;
+	border-bottom-left-radius:23px;
+	text-indent:0;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Georgia;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	line-height:50px;
+	width:150px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #cc9f52;
+}
+#guide:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+	background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+	background-color:#fb9e25;
+}
+
+	#timeline {
+	top: -720px;
+	width: 800px;
+	height: 50px;
+	overflow: hidden;
+	margin: 50px auto;
+	position: relative;
+	background: url('../images/dot.gif') left 45px repeat-x;
+	background-color:#FFFFFF;
+	}
+		#dates {
+			width: 800px;
+			height: 60px;
+			overflow: hidden;
+		}
+			#dates li {
+				list-style: none;
+				float: left;
+				width: 100px;
+				height: 50px;
+				font-size: 14px;
+				text-align: center;
+				background: url('../images/biggerdot.png') center bottom no-repeat;
+			}
+				#dates a {
+					line-height: 38px;
+					padding-bottom: 10px;
+				}
+				#dates .selected {
+			        font-size: 28px;
+				}

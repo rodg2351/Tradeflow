@@ -1,0 +1,125 @@
+#chart {
+    background-color: #FFFFFF;
+    border: 1px solid #808080;
+    font: 10px sans-serif;
+    height: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+    text-shadow: none;
+    width: 1200px;  
+}
+
+.Bar {
+   	right: 25%;
+   	top: 50%;
+    position:absolute; 
+    z-index:1;
+    width:400;
+    height:500
+}
+
+
+#slider{
+	height: 760px;
+	position:relative;
+	left:50%;
+}
+
+.box yearControl {
+    border: thin none;
+    font: 16px sans-serif;
+    height: 96px;
+    left: 48%;
+    padding-left: 15px;
+    padding-top: 13px;
+    text-align: center;
+    top: 15%;
+    width: 195px;
+}
+.slider-range{
+	top:100%
+}
+.chord path {
+    fill-opacity: 0.67;
+    stroke: #000000;
+    stroke-width: 0.5px;
+}
+.label {
+    fill: #000000;
+    font-size: 14px;
+    font-weight: bold;
+}
+.buttonClass {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #808080 #808080 -moz-use-text-color;
+    border-image: none;
+    border-radius: 5px 5px 0 0;
+    border-style: solid solid hidden;
+    border-width: 1px 1px medium;
+    cursor: default;
+    float: left;
+    font-weight: bold;
+    height: 20px;
+    margin-left: 6px;
+    padding-top: 4px;
+    text-align: center;
+    width: 26%;
+    z-index: 10;
+}
+
+.tooltip {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 0.5px solid #AAAAAA;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 4px #BFBEB7 inset;
+    color: #464646;
+    font: 12px sans-serif;
+    height: 200px;
+    opacity: 0.8;
+    padding: 8px;
+    position: absolute;
+    text-align: center;
+    visibility: hidden;
+    width: 160px;
+    z-index: 10;
+}
+.tooltipTable {
+    border: 0 none;
+    padding: 3px;
+    visibility: inherit;
+}
+.years {
+    font-size: 8px;
+    font-weight: bold;
+    left: 45%;
+    position: absolute;
+    top: 98%;
+}
+.note {
+    font-size: 10px;
+    font-weight: bold;
+    left: 2%;
+    position: absolute;
+    text-align: left;
+    top: 88%;
+}
+.logo {
+    background-image: url("Locus_Logo_small.jpg");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    height: 47px;
+    left: 90%;
+    opacity: 0.9;
+    position: absolute;
+    top: 10px;
+    width: 60px;
+}
+
